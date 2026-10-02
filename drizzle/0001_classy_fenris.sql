@@ -1,0 +1,1 @@
+ALTER TABLE `inspections` ADD `completed_date` text;
