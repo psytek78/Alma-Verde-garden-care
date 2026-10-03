@@ -1,5 +1,7 @@
 # vinext-starter
 
+Garden Care's Netlify task register and chat API are described in [GARDEN-CARE-API.md](GARDEN-CARE-API.md).
+
 A clean full-stack starter running on [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and Drizzle support.
 
 ## Prerequisites
