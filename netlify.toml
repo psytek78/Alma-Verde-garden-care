@@ -4,6 +4,3 @@
   NODE_VERSION = "22"
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-[functions."sync-inspections"]
-  schedule = "*/5 * * * *"
