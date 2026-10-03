@@ -16,8 +16,18 @@ export async function GET() {
   catch { return Response.json({ error: 'Unable to load saved garden care tasks. Please try again.' }, { status: 503, headers }); }
 }
 
+function fromApp(req: Request) {
+  const origin = req.headers.get('origin');
+  if (!origin) return false;
+  let originHost = '';
+  try { originHost = new URL(origin).host; } catch { return false; }
+  const forwarded = (req.headers.get('x-forwarded-host') ?? req.headers.get('host') ?? '').split(',')[0].trim();
+  if (forwarded && originHost === forwarded) return true;
+  return originHost === 'almaiso-garden-care.netlify.app' || originHost.endsWith('--almaiso-garden-care.netlify.app');
+}
+
 export async function POST(req: Request) {
-  if (req.headers.get('origin') !== new URL(req.url).origin) return Response.json({ error: 'Invalid request.' }, { status: 403, headers });
+  if (!fromApp(req)) return Response.json({ error: 'Invalid request.' }, { status: 403, headers });
   try {
     const body: unknown = await req.json();
     const db = database();
