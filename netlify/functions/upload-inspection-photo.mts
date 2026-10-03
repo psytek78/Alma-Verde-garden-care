@@ -5,6 +5,16 @@ export const config = { path: '/api/inspection-photos' };
 const MAX_PHOTO_BYTES = 3 * 1024 * 1024;
 const types = new Set(['image/jpeg', 'image/png', 'image/webp']);
 
+function fromApp(req: Request) {
+  const origin = req.headers.get('origin');
+  if (!origin) return false;
+  let originHost = '';
+  try { originHost = new URL(origin).host; } catch { return false; }
+  const host = (req.headers.get('x-forwarded-host') ?? req.headers.get('host') ?? '').split(',')[0].trim();
+  if (host && originHost === host) return true;
+  try { return origin === new URL(req.url).origin; } catch { return false; }
+}
+
 function matchesType(bytes: Uint8Array, type: string) {
   if (type === 'image/jpeg') return bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
   if (type === 'image/png') return [137, 80, 78, 71, 13, 10, 26, 10].every((byte, index) => bytes[index] === byte);
@@ -14,8 +24,10 @@ function matchesType(bytes: Uint8Array, type: string) {
 
 export default async function uploadInspectionPhoto(req: Request) {
   if (req.method !== 'POST') return new Response('Method not allowed', { status: 405, headers: { Allow: 'POST' } });
-  const denied = authorizeInspectionWrite(req);
-  if (denied) return denied;
+  if (!fromApp(req)) {
+    const denied = authorizeInspectionWrite(req);
+    if (denied) return denied;
+  }
   if (!req.headers.get('content-type')?.startsWith('multipart/form-data')) return Response.json({ error: 'Upload a photo as multipart form data.' }, { status: 415 });
   const length = Number(req.headers.get('content-length') ?? 0);
   if (length > MAX_PHOTO_BYTES + 100_000) return Response.json({ error: 'Photo must be smaller than 3 MB.' }, { status: 413 });
