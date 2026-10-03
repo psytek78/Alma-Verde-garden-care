@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Alma Verde · Garden Care",
+  title: "Almaíso · Garden Care",
   description: "Garden care · Almaiso Verde",
   other: {
     "codex-preview": "development",
