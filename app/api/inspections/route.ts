@@ -19,9 +19,9 @@ export async function GET() {
 export async function POST(req: Request) {
   if (req.headers.get('origin') !== new URL(req.url).origin) return Response.json({ error: 'Invalid request.' }, { status: 403, headers });
   try {
-    const body = await req.json();
+    const body: unknown = await req.json();
     const db = database();
-    if (body && typeof body === 'object' && !Array.isArray(body) && typeof body.id === 'string') {
+    if (body && typeof body === 'object' && !Array.isArray(body) && 'id' in body && typeof body.id === 'string') {
       const task = updateSchema.parse(body);
       const [existing] = await db.sql<GardenTask>`SELECT * FROM inspections WHERE id=${task.id}`;
       if (!existing) return Response.json({ error: 'Task not found.' }, { status: 404, headers });
