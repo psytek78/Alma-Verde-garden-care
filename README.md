@@ -1,6 +1,6 @@
 # vinext-starter
 
-Garden Care's Netlify task register and chat API are described in [GARDEN-CARE-API.md](GARDEN-CARE-API.md). To create or open a task from any Almaiso Verde chat, follow [skills/nuova-task/SKILL.md](skills/nuova-task/SKILL.md).
+Garden Care's Netlify task register and chat API are described in [GARDEN-CARE-API.md](GARDEN-CARE-API.md). To create or open a task from any Almaiso Verde chat, follow [skills/new-task/SKILL.md](skills/new-task/SKILL.md).
 
 A clean full-stack starter running on [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and Drizzle support.
 

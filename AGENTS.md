@@ -1,5 +1,5 @@
 # Garden Care
 
-Quando l'utente, in questa chat o in un'altra chat del progetto Almaiso Verde, detta un problema in giardino o chiede di creare, inviare o aprire una task, segui [skills/nuova-task/SKILL.md](skills/nuova-task/SKILL.md).
+When the user, in this chat or in another Almaiso Verde chat, dictates a garden problem or asks to create, send, or open a task, follow [skills/new-task/SKILL.md](skills/new-task/SKILL.md).
 
-Il registro è il database Netlify dell'app https://almaiso-garden-care.netlify.app. Non usare il foglio Google Inspection come fonte.
+The register is the Netlify database of the app https://almaiso-garden-care.netlify.app. Do not use the Google Inspection sheet as the source.
