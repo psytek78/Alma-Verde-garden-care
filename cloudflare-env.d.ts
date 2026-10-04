@@ -1,6 +1,8 @@
-declare namespace Cloudflare {
-  interface Env {
-    DB?: D1Database;
-    BUCKET?: R2Bucket;
+declare global {
+  interface CloudflareEnv {
+    DB: D1Database;
+    PHOTOS: R2Bucket;
   }
 }
+
+export {};
