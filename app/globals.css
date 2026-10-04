@@ -148,6 +148,9 @@ button:disabled{cursor:wait;opacity:.55}
 .app-shell{max-width:440px;min-height:100dvh;margin:0 auto;background:#F7F3EA;display:flex;flex-direction:column;position:relative}
 .masthead{background:#2A2E1E;color:#F2E8D3;padding:18px 20px;display:flex;align-items:center;justify-content:space-between}
 .masthead img{width:148px;height:38px;filter:brightness(0) saturate(100%) invert(93%) sepia(12%) saturate(500%)}
+.home-hero{position:relative;margin:-8px -18px 14px}
+.home-hero img{width:100%;height:auto;display:block}
+.home-hero h1{position:absolute;left:18px;right:18px;bottom:16px;margin:0;color:#fff}
 .brand-mark{width:36px;height:36px;border:0;border-radius:50%;background:#454B32;color:#F2E8D3;display:grid;place-items:center}
 main{flex:1;padding:8px 18px 108px}
 .hello{margin:8px 0 0;color:#6E675C;font-size:15px}
