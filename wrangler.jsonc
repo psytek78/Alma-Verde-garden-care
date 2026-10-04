@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "almaiso-garden-care",
+  "account_id": "27e8d28502a66242f7ccb3e3a7076c3e",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-10-04",
   "compatibility_flags": ["nodejs_compat"],
@@ -18,7 +19,7 @@
     {
       "binding": "DB",
       "database_name": "garden-care",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "e5018fff-1314-435e-876b-ef6c85d47391",
       "migrations_dir": "cloudflare/d1"
     }
   ],
